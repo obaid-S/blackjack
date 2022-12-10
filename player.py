@@ -1,5 +1,36 @@
 from random import randint
 from time import sleep
+def graphic(card):
+  x = card
+  suit = x[0]
+  value = x[1:]
+  if value == '10':
+    space = ""
+  else:
+    space = " "
+  if suit == 'H':
+    suit = '♥'
+  elif suit =='C':
+    suit = '♣'
+  elif suit == 'S':
+    suit = '♠'
+  elif suit == 'D':
+    suit = '♦'
+  hand = """
+   ┌─────────┐
+   │{}{}       │
+   │         │
+   │         │
+   │    {}    │
+   │         │
+   │         │
+   │       {}{}│
+   └─────────┘""".format(value, space, suit, space, value)
+  print(hand)
+#
+#cringe graphics
+#
+  
 class Player:
   bust=False
   stood=False
@@ -15,9 +46,11 @@ class Player:
     temp1=curCards[temp]
     del curCards[temp]   
     if(self.hand_value()>21):
+      graphic(temp1)
       input(f'{self.name} pulled a {temp1} and Busted! (Enter to continue)')
       self.bust=True
     else:
+      graphic(temp1)
       input(f'{self.name} pulled a {temp1}! (Enter to continue)')
 
       
